@@ -14,7 +14,6 @@
   input, select, button, textarea { font-family: inherit; color: inherit; }
   .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; }
 
-  /* ---- header ---- */
   #app-header { padding: 20px 16px 14px; border-bottom: 1px solid #31353B; }
   #app-header .top-row { display: flex; justify-content: space-between; align-items: flex-start; }
   #app-header .eyebrow { font-size: 11px; letter-spacing: 2px; color: #FF7A1A; font-weight: 700; text-transform: uppercase; }
@@ -23,8 +22,10 @@
   #app-header .today-row { display: flex; align-items: baseline; gap: 8px; margin-top: 14px; }
   #app-header .today-points { font-size: 42px; font-weight: 800; color: #3DDC97; line-height: 1; }
   #app-header .today-sub { font-size: 13px; color: #8B9096; }
+  #app-header .today-pct-row { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 10px; border-top: 1px solid #31353B; }
+  #app-header .today-pct-label { font-size: 11px; color: #8B9096; text-transform: uppercase; letter-spacing: 0.5px; }
+  #app-header .today-pct-val { font-size: 16px; font-weight: 800; }
 
-  /* ---- tabs ---- */
   #tabs { display: flex; gap: 6px; padding: 12px 16px; }
   #tabs button { flex: 1; padding: 10px 6px; background: transparent; color: #8B9096; border: none; border-radius: 8px; font-size: 13px; font-weight: 700; letter-spacing: 0.3px; cursor: pointer; }
   #tabs button.active { background: #FF7A1A; color: #171717; }
@@ -35,7 +36,6 @@
 
   #error-banner { display: none; background: #3A2020; border: 1px solid #E5544C; color: #FFB3AE; border-radius: 8px; padding: 8px 12px; font-size: 13px; margin-bottom: 12px; }
 
-  /* ---- form panel ---- */
   .panel { background: #1C1F23; border: 1px solid #31353B; border-radius: 12px; padding: 16px; }
   .panel-label { font-size: 11px; letter-spacing: 1.5px; color: #8B9096; font-weight: 700; margin-bottom: 12px; text-transform: uppercase; }
   .field-label { font-size: 12px; color: #8B9096; display: block; margin-top: 10px; }
@@ -57,7 +57,6 @@
   .section-label { font-size: 11px; letter-spacing: 1.5px; color: #8B9096; font-weight: 700; margin: 16px 0 10px; text-transform: uppercase; }
   .section-label:first-child { margin-top: 0; }
 
-  /* ---- entry rows ---- */
   .entry-row { background: #1C1F23; border: 1px solid #31353B; border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
   .entry-row .info { min-width: 0; }
   .entry-row .job { font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -65,6 +64,7 @@
   .entry-row .right { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
   .entry-row .pts { font-size: 16px; font-weight: 800; color: #3DDC97; }
   .entry-row .pts.manual { color: #FF7A1A; }
+  .entry-row .pts-pct { font-size: 12px; font-weight: 700; }
   .entry-row button { background: none; border: none; cursor: pointer; font-size: 13px; padding: 4px; }
   .entry-row .edit-btn { color: #8B9096; }
   .entry-row .delete-btn { color: #E5544C; }
@@ -73,28 +73,17 @@
 
   .day-group-label { font-size: 11px; color: #8B9096; font-weight: 700; margin: 10px 0 6px; }
 
-  /* ---- nav header ---- */
   .nav-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
   .nav-btn { background: #1C1F23; border: 1px solid #31353B; color: #E8E6E0; border-radius: 8px; width: 36px; height: 36px; font-size: 18px; cursor: pointer; }
   .nav-center { text-align: center; }
   .nav-center .label { font-size: 14px; font-weight: 700; }
   .nav-center button { background: none; border: none; color: #FF7A1A; font-size: 11px; cursor: pointer; padding: 2px; }
 
-  /* ---- stat row ---- */
   .stat-row { display: flex; gap: 8px; }
   .stat-box { flex: 1; background: #1C1F23; border: 1px solid #31353B; border-radius: 12px; padding: 10px; }
   .stat-box .stat-label { font-size: 9px; color: #8B9096; letter-spacing: 0.5px; text-transform: uppercase; }
   .stat-box .stat-value { font-size: 21px; font-weight: 800; }
 
-  /* ---- shift card ---- */
-  .shift-card { background: #1C1F23; border: 1px solid #31353B; border-radius: 12px; padding: 12px 14px; margin-top: 10px; }
-  .shift-card .shift-title { font-size: 10px; color: #8B9096; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
-  .shift-inputs { display: flex; gap: 8px; align-items: flex-end; }
-  .shift-inputs > div { flex: 1; }
-  .shift-inputs label { font-size: 11px; color: #8B9096; }
-  .save-shift-btn { background: #FF7A1A; color: #171717; border: none; border-radius: 7px; padding: 9px 14px; font-weight: 800; font-size: 13px; cursor: pointer; margin-top: 4px; }
-
-  /* ---- week bar chart ---- */
   .bar-chart { display: flex; gap: 6px; align-items: flex-end; height: 90px; margin: 16px 0 8px; background: #1C1F23; border: 1px solid #31353B; border-radius: 12px; padding: 12px 10px 8px; }
   .bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; }
   .bar { width: 100%; border-radius: 3px; background: #3DDC97; }
@@ -135,6 +124,10 @@
     <div class="today-points mono" id="hdr-points">0</div>
     <div class="today-sub" id="hdr-sub">pts today · 0m</div>
   </div>
+  <div class="today-pct-row" id="hdr-pct-row">
+    <span class="today-pct-label">Today's productivity</span>
+    <span class="today-pct-val mono" id="hdr-pct">—</span>
+  </div>
 </div>
 
 <div id="tabs">
@@ -147,7 +140,6 @@
 <div id="content">
   <div id="error-banner"></div>
 
-  <!-- ================= LOG TAB ================= -->
   <section id="tab-log" class="tab-section active">
     <form id="entry-form" class="panel" style="margin-bottom:18px;">
       <div class="panel-label" id="form-title">New entry</div>
@@ -188,7 +180,6 @@
     <div id="log-today-entries"></div>
   </section>
 
-  <!-- ================= DAY TAB ================= -->
   <section id="tab-day" class="tab-section">
     <div class="nav-header">
       <button class="nav-btn" data-nav="day-prev">‹</button>
@@ -200,26 +191,10 @@
     </div>
     <div class="stat-row" id="day-stats"></div>
 
-    <div class="shift-card">
-      <div class="shift-title">On-site hours (for productivity %)</div>
-      <div class="shift-inputs">
-        <div>
-          <label>Hours</label>
-          <input type="number" min="0" inputmode="numeric" id="shift-hours" placeholder="0" />
-        </div>
-        <div>
-          <label>Minutes</label>
-          <input type="number" min="0" max="59" inputmode="numeric" id="shift-minutes" placeholder="0" />
-        </div>
-        <button class="save-shift-btn" id="save-shift-btn">Save</button>
-      </div>
-    </div>
-
     <div class="section-label">Entries</div>
     <div id="day-entries"></div>
   </section>
 
-  <!-- ================= WEEK TAB ================= -->
   <section id="tab-week" class="tab-section">
     <div class="nav-header">
       <button class="nav-btn" data-nav="week-prev">‹</button>
@@ -235,7 +210,6 @@
     <div id="week-entries"></div>
   </section>
 
-  <!-- ================= MONTH TAB ================= -->
   <section id="tab-month" class="tab-section">
     <div class="nav-header">
       <button class="nav-btn" data-nav="month-prev">‹</button>
@@ -261,17 +235,14 @@
 (function () {
   "use strict";
 
-  // ---------- constants ----------
   var JOB_TYPES = [
     "Fiber TC", "Fiber Install", "Coax TC", "Coax Install",
-    "Coax Self Install Rescue", "Drop Hang", "Equipment Pickup", "Tech Assist"
+    "Coax Self Install Rescue", "Drop Hang", "Equipment Pickup", "Tech Assist", "FRC Fail"
   ];
   var DAY_NAMES = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
   var MONTH_NAMES = ["January","February","March","April","May","June","July","August","September","October","November","December"];
   var ENTRIES_KEY = "site-log-entries-v1";
-  var SHIFTS_KEY = "site-log-shifts-v1";
 
-  // ---------- date helpers ----------
   function pad(n) { return String(n).padStart(2, "0"); }
   function toISO(d) { return d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate()); }
   function fromISO(s) { var p = s.split("-").map(Number); return new Date(p[0], p[1] - 1, p[2]); }
@@ -297,9 +268,7 @@
     return div.innerHTML;
   }
 
-  // ---------- state ----------
   var entries = [];
-  var shifts = {};
   var anchorDate = new Date();
   var editingId = null;
   var currentTab = "log";
@@ -309,18 +278,10 @@
       var e = localStorage.getItem(ENTRIES_KEY);
       entries = e ? JSON.parse(e) : [];
     } catch (err) { entries = []; }
-    try {
-      var s = localStorage.getItem(SHIFTS_KEY);
-      shifts = s ? JSON.parse(s) : {};
-    } catch (err) { shifts = {}; }
   }
   function saveEntries() {
     try { localStorage.setItem(ENTRIES_KEY, JSON.stringify(entries)); }
     catch (err) { showError("Couldn't save — storage may be full."); }
-  }
-  function saveShifts() {
-    try { localStorage.setItem(SHIFTS_KEY, JSON.stringify(shifts)); }
-    catch (err) { showError("Couldn't save shift hours."); }
   }
   function showError(msg) {
     var box = document.getElementById("error-banner");
@@ -333,13 +294,16 @@
     box.textContent = "";
   }
 
-  function productiveMinutes(list) {
-    return list.reduce(function (s, x) { return s + x.points * 5; }, 0);
-  }
+  // productivity: points converted back to minutes, vs. the actual hours you entered for those jobs
+  function productiveMinutes(list) { return list.reduce(function (s, x) { return s + x.points * 5; }, 0); }
   function sumPoints(list) { return list.reduce(function (s, x) { return s + x.points; }, 0); }
   function sumMinutes(list) { return list.reduce(function (s, x) { return s + x.minutes; }, 0); }
+  function productivityPct(list) {
+    var enteredMinutes = sumMinutes(list);
+    if (enteredMinutes <= 0) return null;
+    return Math.round((productiveMinutes(list) / enteredMinutes) * 100);
+  }
 
-  // ---------- form ----------
   function populateJobTypeSelect() {
     var sel = document.getElementById("f-jobtype");
     sel.innerHTML = JOB_TYPES.map(function (jt) { return '<option value="' + esc(jt) + '">' + esc(jt) + "</option>"; }).join("");
@@ -447,30 +411,17 @@
     renderAll();
   }
 
-  // ---------- shift hours ----------
-  function syncShiftInputs() {
-    var iso = toISO(anchorDate);
-    var m = shifts[iso];
-    document.getElementById("shift-hours").value = m ? String(Math.floor(m / 60)) : "";
-    document.getElementById("shift-minutes").value = m ? String(m % 60) : "";
-  }
-  function saveShift() {
-    var h = parseInt(document.getElementById("shift-hours").value, 10) || 0;
-    var m = parseInt(document.getElementById("shift-minutes").value, 10) || 0;
-    var total = h * 60 + m;
-    var iso = toISO(anchorDate);
-    if (total > 0) shifts[iso] = total; else delete shifts[iso];
-    saveShifts();
-    renderAll();
-  }
-
-  // ---------- entry row rendering ----------
   function entryRowHTML(e, hideDate) {
     var metaParts = [];
     if (!hideDate) metaParts.push(esc(fmtDateShort(fromISO(e.date))));
     if (e.minutes > 0) metaParts.push(minutesToHM(e.minutes));
     if (e.manual) metaParts.push("work order");
     if (e.description) metaParts.push(esc(e.description));
+
+    var entryPct = e.minutes > 0 ? Math.round((e.points * 5 / e.minutes) * 100) : null;
+    var pctColor = entryPct === null ? "#8B9096" : entryPct >= 80 ? "#3DDC97" : entryPct >= 50 ? "#FF7A1A" : "#E5544C";
+    var pctHTML = entryPct === null ? "" : '<div class="pts-pct mono" style="color:' + pctColor + ';">' + entryPct + "%</div>";
+
     return (
       '<div class="entry-row">' +
         '<div class="info">' +
@@ -479,6 +430,7 @@
         "</div>" +
         '<div class="right">' +
           '<div class="pts mono' + (e.manual ? " manual" : "") + '">' + e.points + "</div>" +
+          pctHTML +
           '<button class="edit-btn" data-action="edit" data-id="' + e.id + '">Edit</button>' +
           '<button class="delete-btn" data-action="delete" data-id="' + e.id + '">Delete</button>' +
         "</div>" +
@@ -489,51 +441,52 @@
     return '<div class="empty-state">' + esc(text) + "</div>";
   }
 
-  // ---------- render: header ----------
   function renderHeader() {
     var todayEntries = entries.filter(function (x) { return x.date === todayISO(); });
     var pts = sumPoints(todayEntries);
     var mins = sumMinutes(todayEntries);
     document.getElementById("hdr-points").textContent = pts;
     document.getElementById("hdr-sub").textContent = "pts today · " + minutesToHM(mins);
-  }
 
-  // ---------- render: log tab ----------
-  function renderLogTab() {
-    var todayEntries = entries.filter(function (x) { return x.date === todayISO(); });
-    var container = document.getElementById("log-today-entries");
-    if (todayEntries.length === 0) {
-      container.innerHTML = emptyStateHTML("No entries logged today yet.");
+    var pct = productivityPct(todayEntries);
+    var pctEl = document.getElementById("hdr-pct");
+    if (pct === null) {
+      pctEl.textContent = "—";
+      pctEl.style.color = "#8B9096";
     } else {
-      container.innerHTML = todayEntries.map(function (e) { return entryRowHTML(e, false); }).join("");
+      pctEl.textContent = pct + "%";
+      pctEl.style.color = pct >= 80 ? "#3DDC97" : pct >= 50 ? "#FF7A1A" : "#E5544C";
     }
   }
 
-  // ---------- render: stat row ----------
+  function renderLogTab() {
+    var todayEntries = entries.filter(function (x) { return x.date === todayISO(); });
+    var container = document.getElementById("log-today-entries");
+    container.innerHTML = todayEntries.length === 0
+      ? emptyStateHTML("No entries logged today yet.")
+      : todayEntries.map(function (e) { return entryRowHTML(e, false); }).join("");
+  }
+
   function statRowHTML(points, minutes, pct) {
     var pctColor = pct === null ? "#8B9096" : pct >= 80 ? "#3DDC97" : pct >= 50 ? "#FF7A1A" : "#E5544C";
     var pctText = pct === null ? "—" : pct + "%";
     return (
       '<div class="stat-box"><div class="stat-label">Points</div><div class="stat-value mono" style="color:#3DDC97;">' + points + "</div></div>" +
       '<div class="stat-box"><div class="stat-label">Time</div><div class="stat-value mono">' + (minutes > 0 ? minutesToHM(minutes) : "0m") + "</div></div>" +
-      '<div class="stat-box"><div class="stat-label">On-site %</div><div class="stat-value mono" style="color:' + pctColor + ';">' + pctText + "</div></div>"
+      '<div class="stat-box"><div class="stat-label">Productivity</div><div class="stat-value mono" style="color:' + pctColor + ';">' + pctText + "</div></div>"
     );
   }
 
-  // ---------- render: day tab ----------
   function renderDayTab() {
     document.getElementById("day-label").textContent = fmtDateLong(anchorDate);
     var iso = toISO(anchorDate);
     var dayEntries = entries.filter(function (x) { return x.date === iso; });
-    var dayShiftMinutes = shifts[iso] || 0;
-    var pct = dayShiftMinutes > 0 ? Math.round((productiveMinutes(dayEntries) / dayShiftMinutes) * 100) : null;
+    var pct = productivityPct(dayEntries);
     document.getElementById("day-stats").innerHTML = statRowHTML(sumPoints(dayEntries), sumMinutes(dayEntries), pct);
-    syncShiftInputs();
     var container = document.getElementById("day-entries");
     container.innerHTML = dayEntries.length === 0 ? emptyStateHTML("Nothing logged this day.") : dayEntries.map(function (e) { return entryRowHTML(e, false); }).join("");
   }
 
-  // ---------- render: week tab ----------
   function renderWeekTab() {
     var weekStart = startOfWeek(anchorDate);
     var weekDays = [];
@@ -548,12 +501,9 @@
     var weekByDay = weekDays.map(function (d) {
       var iso = toISO(d);
       var es = weekEntries.filter(function (x) { return x.date === iso; });
-      var shiftM = shifts[iso] || 0;
-      var prodM = productiveMinutes(es);
-      return { date: d, points: sumPoints(es), shiftMinutes: shiftM, pct: shiftM > 0 ? Math.round((prodM / shiftM) * 100) : null };
+      return { date: d, points: sumPoints(es), pct: productivityPct(es) };
     });
-    var weekShiftMinutes = weekByDay.reduce(function (s, d) { return s + d.shiftMinutes; }, 0);
-    var weekPct = weekShiftMinutes > 0 ? Math.round((productiveMinutes(weekEntries) / weekShiftMinutes) * 100) : null;
+    var weekPct = productivityPct(weekEntries);
 
     document.getElementById("week-stats").innerHTML = statRowHTML(sumPoints(weekEntries), sumMinutes(weekEntries), weekPct);
 
@@ -571,11 +521,11 @@
       );
     }).join("");
 
-    var pctListHTML = '<div class="pct-list-head"><span>Day</span><span>On-site % productive</span></div>';
+    var pctListHTML = '<div class="pct-list-head"><span>Day</span><span>Productivity</span></div>';
     pctListHTML += weekByDay.map(function (d) {
       var iso = toISO(d.date);
-      var pctColor = d.pct === null ? "#8B9096" : "#FF7A1A";
-      var pctText = d.pct === null ? "— no hours set" : d.pct + "%";
+      var pctColor = d.pct === null ? "#8B9096" : d.pct >= 80 ? "#3DDC97" : d.pct >= 50 ? "#FF7A1A" : "#E5544C";
+      var pctText = d.pct === null ? "— no entries" : d.pct + "%";
       return (
         '<div class="pct-row" data-action="goto-day" data-date="' + iso + '">' +
           '<span class="day-name">' + esc(fmtDateLong(d.date)) + "</span>" +
@@ -600,7 +550,6 @@
     document.getElementById("week-entries").innerHTML = entriesHTML;
   }
 
-  // ---------- render: month tab ----------
   function renderMonthTab() {
     var y = anchorDate.getFullYear(), m = anchorDate.getMonth();
     document.getElementById("month-label").textContent = MONTH_NAMES[m] + " " + y;
@@ -609,16 +558,10 @@
       var d = fromISO(x.date);
       return d.getFullYear() === y && d.getMonth() === m;
     });
-
-    var monthShiftMinutes = Object.keys(shifts).reduce(function (sum, iso) {
-      var d = fromISO(iso);
-      return (d.getFullYear() === y && d.getMonth() === m) ? sum + shifts[iso] : sum;
-    }, 0);
-    var monthPct = monthShiftMinutes > 0 ? Math.round((productiveMinutes(monthEntries) / monthShiftMinutes) * 100) : null;
+    var monthPct = productivityPct(monthEntries);
 
     document.getElementById("month-stats").innerHTML = statRowHTML(sumPoints(monthEntries), sumMinutes(monthEntries), monthPct);
 
-    // by job
     var jobMap = {};
     monthEntries.forEach(function (x) { jobMap[x.jobType] = (jobMap[x.jobType] || 0) + x.points; });
     var jobEntries = Object.keys(jobMap).map(function (k) { return [k, jobMap[k]]; }).sort(function (a, b) { return b[1] - a[1]; });
@@ -632,7 +575,6 @@
       }).join("");
     }
 
-    // by day
     var dateMap = {};
     monthEntries.forEach(function (x) {
       if (!dateMap[x.date]) dateMap[x.date] = { points: 0, list: [] };
@@ -641,18 +583,16 @@
     });
     var dateRows = Object.keys(dateMap).map(function (iso) {
       var v = dateMap[iso];
-      var shiftM = shifts[iso] || 0;
-      var pct = shiftM > 0 ? Math.round((productiveMinutes(v.list) / shiftM) * 100) : null;
-      return { iso: iso, points: v.points, pct: pct };
+      return { iso: iso, points: v.points, pct: productivityPct(v.list) };
     }).sort(function (a, b) { return a.iso < b.iso ? 1 : -1; });
 
     var byDayContainer = document.getElementById("month-by-day");
     if (dateRows.length === 0) {
       byDayContainer.innerHTML = emptyStateHTML("Nothing logged this month.");
     } else {
-      var html = '<div class="job-list"><div class="date-list-head"><span>Date</span><span>Points · On-site %</span></div>';
+      var html = '<div class="job-list"><div class="date-list-head"><span>Date</span><span>Points · Productivity</span></div>';
       html += dateRows.map(function (r) {
-        var pctColor = r.pct === null ? "#8B9096" : "#FF7A1A";
+        var pctColor = r.pct === null ? "#8B9096" : r.pct >= 80 ? "#3DDC97" : r.pct >= 50 ? "#FF7A1A" : "#E5544C";
         var pctText = r.pct === null ? "—" : r.pct + "%";
         return (
           '<div class="date-row" data-action="goto-day" data-date="' + r.iso + '">' +
@@ -675,7 +615,6 @@
     renderMonthTab();
   }
 
-  // ---------- tabs ----------
   function switchTab(tab) {
     currentTab = tab;
     document.querySelectorAll("#tabs button").forEach(function (b) {
@@ -686,7 +625,6 @@
     });
   }
 
-  // ---------- event wiring ----------
   function init() {
     loadState();
     populateJobTypeSelect();
@@ -697,8 +635,6 @@
     ["f-hours", "f-minutes", "f-manualpoints"].forEach(function (id) {
       document.getElementById(id).addEventListener("input", updatePreview);
     });
-
-    document.getElementById("save-shift-btn").addEventListener("click", saveShift);
 
     document.querySelectorAll("#tabs button").forEach(function (b) {
       b.addEventListener("click", function () { switchTab(b.getAttribute("data-tab")); });
