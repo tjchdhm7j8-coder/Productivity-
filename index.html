@@ -239,6 +239,15 @@
     "Fiber TC", "Fiber Install", "Coax TC", "Coax Install",
     "Coax Self Install Rescue", "Drop Hang", "Equipment Pickup", "Tech Assist", "FRC Fail"
   ];
+  var JOB_TYPE_POINTS = {
+    "Fiber TC": 15,
+    "Coax TC": 15,
+    "Coax Self Install Rescue": 15,
+    "Coax Install": 18,
+    "Equipment Pickup": 3,
+    "FRC Fail": 0,
+    "Fiber Install": 28
+  };
   var DAY_NAMES = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
   var MONTH_NAMES = ["January","February","March","April","May","June","July","August","September","October","November","December"];
   var ENTRIES_KEY = "site-log-entries-v1";
@@ -309,18 +318,28 @@
     sel.innerHTML = JOB_TYPES.map(function (jt) { return '<option value="' + esc(jt) + '">' + esc(jt) + "</option>"; }).join("");
   }
 
+  function applyDefaultPoints() {
+    var jobType = document.getElementById("f-jobtype").value;
+    var manualField = document.getElementById("f-manualpoints");
+    if (Object.prototype.hasOwnProperty.call(JOB_TYPE_POINTS, jobType)) {
+      manualField.value = String(JOB_TYPE_POINTS[jobType]);
+    } else {
+      manualField.value = "";
+    }
+    updatePreview();
+  }
+
   function resetForm() {
     document.getElementById("f-jobtype").value = JOB_TYPES[0];
     document.getElementById("f-hours").value = "";
     document.getElementById("f-minutes").value = "";
     document.getElementById("f-description").value = "";
-    document.getElementById("f-manualpoints").value = "";
     document.getElementById("f-date").value = todayISO();
     editingId = null;
     document.getElementById("form-title").textContent = "New entry";
     document.getElementById("submit-btn").textContent = "Punch in entry";
     document.getElementById("cancel-edit-btn").style.display = "none";
-    updatePreview();
+    applyDefaultPoints();
   }
 
   function updatePreview() {
@@ -632,6 +651,7 @@
 
     document.getElementById("entry-form").addEventListener("submit", submitEntry);
     document.getElementById("cancel-edit-btn").addEventListener("click", resetForm);
+    document.getElementById("f-jobtype").addEventListener("change", applyDefaultPoints);
     ["f-hours", "f-minutes", "f-manualpoints"].forEach(function (id) {
       document.getElementById(id).addEventListener("input", updatePreview);
     });
